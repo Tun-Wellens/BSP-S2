@@ -26,38 +26,45 @@ while True:
     print("6. Decrypt using GCM mode of operation")
     print("7. Exit")
     option = input("Enter your option: ")
-    if option == "1":
-        file_path = input("Enter the path of the file you want to encrypt: ")
-        output_path = input("Enter the path of the output file: ")
-        cbc_encrypt(master_key, file_path, output_path)
-        print("File encrypted successfully!")
-    elif option == "2":
-        file_path = input("Enter the path of the file you want to decrypt: ")
-        output_path = input("Enter the path of the output file: ")
-        cbc_decrypt(master_key, file_path, output_path)
-        print("File decrypted successfully!")
-    elif option == "3":
-        file_path = input("Enter the path of the file you want to encrypt: ")
-        output_path = input("Enter the path of the output file: ")
-        cm_encrypt(master_key, file_path, output_path)
-        print("File encrypted successfully!")
-    elif option == "4":
-        file_path = input("Enter the path of the file you want to decrypt: ")
-        output_path = input("Enter the path of the output file: ")
-        cm_decrypt(master_key, file_path, output_path)
-        print("File decrypted successfully!")
-    elif option == "5":
-        file_path = input("Enter the path of the file you want to encrypt: ")
-        output_path = input("Enter the path of the output file: ")
-        gcm_encrypt(master_key, file_path, output_path)
-        print("File encrypted successfully!")
-    elif option == "6":
-        file_path = input("Enter the path of the file you want to decrypt: ")
-        output_path = input("Enter the path of the output file: ")
-        gcm_decrypt(master_key, file_path, output_path)
-        print("File decrypted successfully!")
-    elif option == "7":
-        print("Goodbye!")
-        break
-    else:
-        print("Invalid option, please try again.")
+    try:
+        if option == "1":
+            file_path = input("Enter the path of the file you want to encrypt: ")
+            output_path = input("Enter the path of the output file: ")
+            cbc_encrypt(master_key, file_path, output_path)
+            print("File encrypted successfully!")
+        elif option == "2":
+            file_path = input("Enter the path of the file you want to decrypt: ")
+            output_path = input("Enter the path of the output file: ")
+            cbc_decrypt(master_key, file_path, output_path)
+            print("File decrypted successfully!")
+        elif option == "3":
+            file_path = input("Enter the path of the file you want to encrypt: ")
+            output_path = input("Enter the path of the output file: ")
+            cm_encrypt(master_key, file_path, output_path)
+            print("File encrypted successfully!")
+        elif option == "4":
+            file_path = input("Enter the path of the file you want to decrypt: ")
+            output_path = input("Enter the path of the output file: ")
+            cm_decrypt(master_key, file_path, output_path)
+            print("File decrypted successfully!")
+        elif option == "5":
+            file_path = input("Enter the path of the file you want to encrypt: ")
+            output_path = input("Enter the path of the output file: ")
+            gcm_encrypt(master_key, file_path, output_path)
+            print("File encrypted successfully!")
+        elif option == "6":
+            file_path = input("Enter the path of the file you want to decrypt: ")
+            output_path = input("Enter the path of the output file: ")
+            gcm_decrypt(master_key, file_path, output_path)
+            print("File decrypted successfully!")
+        elif option == "7":
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid option, please try again.")
+    except FileNotFoundError:
+        print("File not found, please try again.")
+        continue
+    except Exception as e:
+        print("Unexpected error occurred:", e, "\nPlease try again.")
+        continue
